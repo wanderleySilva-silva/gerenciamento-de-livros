@@ -24,7 +24,7 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item" style="text-align: center;">
-         <h3 style="color: #fff;">CRUD - Java - Spring Boot - Thymeleaf</h3>
+         <h3 style="color: #fff;">Sistema para gerenciamento de livros</h3>
         </li>
       </ul>
     </div>
@@ -34,11 +34,6 @@
 <div class="principal">
 		<div class="titulo"
 			style="display: flex; justify-content: space-between; align-items: center;">
-				<h2>Livros</h2>
-			<a th:href="@{/novo-livro}" id="novo" type="button"
-				class="btn btn-primary" style="margin-left: auto;">Novo Livro</a>
-		</div>
-
 			<div class="col-sm-4">
 				<form th:action="@{/buscar}" method="post"
 					style="margin-top: 8px; margin-bottom: 8px;">
@@ -46,13 +41,16 @@
 						<input type="text" class="form-control" name="autor"
 							placeholder="Busque um livro pelo autor"
 							style="margin-right: 3px; border-radius: 4px;" />
-						<button class="btn btn-primary" type="submit"
-							style="margin-right: 4px; border-radius: 4px; border: 0px;">Buscar</button>
-						<a th:href="@{/}" class="btn btn-dark" type="submit"
-							style="border-radius: 4px; border: 0px; background-color: #3C454A; color: white;">Cancelar</a>
+						<button class="btn btn-outline-warning" id="buscar" type="submit">Buscar</button>
+						<a th:href="@{/}" class="btn btn-dark" id="cancelar" type="submit">Cancelar</a>
 					</div>
 				</form>
 			</div>
+			<a th:href="@{/novo-livro}" id="novo" type="button"
+				class="btn btn-primary" style="margin-left: auto;">Novo Livro</a>
+		</div>
+
+			
 		<table class="table">
 			<thead>
 				<tr>
@@ -84,13 +82,13 @@
 				</tr>
 			</tbody>
 		</table>
-		<div th:if="${totalPages > 1}">
+		<div th:if="${totalPages > 1}" style="background-color: #CCFFEA; border-radius: 5px;">
 			<div class="row col-sm-10">
 				<div class="col-sm-5"></div>
 				<div class="col-sm-3">
-					<span style="color: #6EBDEB;"
+					<span style="color: #000000"
 						th:each="i: ${#numbers.sequence(1, totalPages)}"> <a
-						style="color: #D5E9F5;" th:if="${currentPage != i}"
+						th:if="${currentPage != i}"
 						th:href="@{'/page/' + ${i}+ '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">[[${i}]]</a>
 						<span th:unless="${currentPage != i}">[[${i}]]</span>
 					</span>
