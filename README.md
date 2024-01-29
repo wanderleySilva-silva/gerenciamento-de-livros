@@ -6,14 +6,14 @@
 <div  align="center">
   <div style="display: inline_block">
     <h3>Tela inicial da aplicação.</h3>
-    <img align="center" height="200px;" width="800px" src="src/main/resources/static/imagens/tela-inicial.png">
+    <img align="center" height="300px;" width="800px" src="src/main/resources/static/imagens/tela-inicial.png">
    </div>
    <div style="display: inline_block"><br>
         <h3>Formulário para cadastro de livro.</h3>
-         <img align="center" height="200px;" width="800px" src="src/main/resources/static/imagens/cadastro-livro.png">
+         <img align="center" height="300px;" width="800px" src="src/main/resources/static/imagens/cadastro-livro.png">
     </div>
     <div style="display: inline_block"><br>
         <h3>Formulário para atualização de livro.</h3>
-         <img align="center" height="200px;" width="800px" src="src/main/resources/static/imagens/atualizar-livro.png">
+         <img align="center" height="300px;" width="800px" src="src/main/resources/static/imagens/atualizar-livro.png">
     </div>
 </div>
