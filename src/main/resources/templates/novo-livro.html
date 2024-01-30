@@ -15,9 +15,11 @@
 </head>
 <body>
 <div class="div-form">
-	<h2>Cadastre um Livro</h2>
+		<div class="titulo">
+			<h2>Cadastre um Livro</h2>
+		</div>
 
-	<form th:action="@{/salvar-livro}" th:object="${livro}" method="post">
+		<form th:action="@{/salvar-livro}" th:object="${livro}" method="post">
 		<input class="form-control" id="titulo" name="titulo" type="text"
 			th:field="*{titulo}" placeholder="Título do livro"
 			aria-label="default input example"> <input

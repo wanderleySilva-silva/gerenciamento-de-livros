@@ -9,5 +9,4 @@ public class EstudosSpringbootThymeleafApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(EstudosSpringbootThymeleafApplication.class, args);
 	}
-
 }

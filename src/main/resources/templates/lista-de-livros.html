@@ -24,7 +24,7 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item" style="text-align: center;">
-         <h3 style="color: #fff;">Sistema para gerenciamento de livros</h3>
+         <h1 style="color: #fff;">Gerenciamento de livros</h1>
         </li>
       </ul>
     </div>
@@ -40,9 +40,8 @@
 					<div class="input-group">
 						<input type="text" class="form-control" name="autor"
 							placeholder="Busque um livro pelo autor"
-							style="margin-right: 3px; border-radius: 4px;" />
-						<button class="btn btn-outline-warning" id="buscar" type="submit">Buscar</button>
-						<a th:href="@{/}" class="btn btn-dark" id="cancelar" type="submit">Cancelar</a>
+							style="margin-right: 5px; border-radius: 5px;" />
+						<button class="btn btn-outline-success" id="buscar" type="submit">Buscar</button>
 					</div>
 				</form>
 			</div>
@@ -50,39 +49,40 @@
 				class="btn btn-primary" style="margin-left: auto;">Novo Livro</a>
 		</div>
 
-			
-		<table class="table">
-			<thead>
-				<tr>
-					<th>Código</th>
-					<th>Título</th>
-					<th>Autor</th>
-					<th>Ações</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr th:each="livro : ${livros}">
-					<td id="td1" th:text="${livro.codigo}"></td>
-					<td id="td2" th:text="${livro.titulo}"></td>
-					<td id="td3" th:text="${livro.autor}"></td>
-					<td class="acoes">
+		<div class="table-responsive">
+			<table>
+				<thead>
+					<tr>
+						<th>Código</th>
+						<th>Título</th>
+						<th>Autor</th>
+						<th>Ações</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="livro : ${livros}">
+						<td id="td1" th:text="${livro.codigo}" style="white-space: nowrap"></td>
+						<td id="td2" th:text="${livro.titulo}" style="white-space: nowrap;"></td>
+						<td id="td3" th:text="${livro.autor}" style="white-space: nowrap;"></td>
+						<td class="acoes" style="white-space: nowrap;">
 
-						<div>
-							<a class="btn" id="editar"
-								th:href="@{/editar-livro/{codigo}(codigo=${livro.codigo})}">Editar</a>
+							<div>
+								<a class="btn" id="editar"
+									th:href="@{/editar-livro/{codigo}(codigo=${livro.codigo})}">Editar</a>
 
-							<a class="btn" id="excluir"
-								th:href="@{/excluir-livro/{codigo}(codigo=${livro.codigo})}"
-								th:data-confirm-delete="|Você gostaria de excluir o livro ${livro.titulo}?|"
-								th:onclick="if (!confirm(this.getAttribute('data-confirm-delete')))
+								<a class="btn" id="excluir"
+									th:href="@{/excluir-livro/{codigo}(codigo=${livro.codigo})}"
+									th:data-confirm-delete="|Você gostaria de excluir o livro ${livro.titulo}?|"
+									th:onclick="if (!confirm(this.getAttribute('data-confirm-delete')))
 													      return false">Excluir</a>
-													      
-						</div>
-					</td>
-				</tr>
-			</tbody>
-		</table>
-		<div th:if="${totalPages > 1}" style="background-color: #CCFFEA; border-radius: 5px;">
+
+							</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div th:if="${totalPages > 1}" style="background-color: #79b6c9; border-radius: 5px;">
 			<div class="row col-sm-10">
 				<div class="col-sm-5"></div>
 				<div class="col-sm-3">

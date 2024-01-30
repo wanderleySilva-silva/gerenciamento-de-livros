@@ -6,7 +6,6 @@
 }
 
 body{
-	background-color:#00D67D;
 	padding: 1rem;
 }
 
@@ -19,13 +18,13 @@ body{
 	border-radius: 5px;
 	padding-bottom: 5rem;
 	margin-top: 80px;
-	background-color: #066F80;
+	background-color: #79b6c9;
 }
 
 h2{
 	text-align: center;
 	margin-top: 1rem;
-	color: #fff;
+	color: #000000;
 }
 
 form {
@@ -35,6 +34,7 @@ form {
 	width: 500px;
 	margin: 0 auto;
 }
+
 #titulo{
 	margin-bottom: 1rem;
 }
@@ -57,7 +57,7 @@ button{
 	margin-top: 0.5rem;
 }
 .voltar{
-	color: #fff;
+	color: #000000;
 	justify-content: center;
 	text-align: center;
 	display: flex;
