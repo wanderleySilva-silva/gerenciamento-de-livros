@@ -1,5 +1,8 @@
-package estudos.springboot.thymeleaf.controlador;
+package estudos.springboot.thymeleaf.controllers;
 
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,14 +16,19 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import estudos.springboot.thymeleaf.modelo.Livro;
-import estudos.springboot.thymeleaf.servico.LivroServico;
+import estudos.springboot.thymeleaf.entities.Livro;
+import estudos.springboot.thymeleaf.services.LivroService;
+import estudos.springboot.thymeleaf.services.PdfService;
+import jakarta.servlet.http.HttpServletResponse;
 
 @Controller
-public class LivroControlador {
+public class LivroController {
 
 	@Autowired
-	private LivroServico livroServico;
+	private LivroService livroService;
+	
+	@Autowired
+	PdfService pdfService;
 	
 	@GetMapping("/novo-livro")
 	public String cadastrarLivro(Model model) {
@@ -31,7 +39,7 @@ public class LivroControlador {
 	
 	@PostMapping("/salvar-livro")
 	public String salvarLivro(@ModelAttribute("livro") Livro livro) {
-		livroServico.salvarLivro(livro);
+		livroService.salvarLivro(livro);
 		return "redirect:/novo-livro";
 	}
 	
@@ -42,12 +50,12 @@ public class LivroControlador {
 	
 	@GetMapping("/excluir-livro/{codigo}")
 	public String excluirLivro(@PathVariable("codigo") Long codigo, Model model) {
-		livroServico.excluirLivro(codigo);
+		livroService.excluirLivro(codigo);
 		return "redirect:/";
 	}
 	@GetMapping("/editar-livro/{codigo}")
 	public String abrirForamularioDeEdicao(@PathVariable("codigo") Long codigo, Model model) {
-		Livro livro = livroServico.validarSeLivroExiste(codigo);
+		Livro livro = livroService.validarSeLivroExiste(codigo);
 		model.addAttribute("livro", livro);
 		
 		return "/atualizar-livro";
@@ -55,7 +63,7 @@ public class LivroControlador {
 	}
 	@PostMapping("/editar-livro/{codigo}")
 	public String atualizarLivro(@PathVariable("codigo") Long codigo, @ModelAttribute("livro") Livro livro) {
-		livroServico.atualizarLivro(codigo, livro);
+		livroService.atualizarLivro(codigo, livro);
 		
 		return "redirect:/";
 	}
@@ -66,7 +74,7 @@ public class LivroControlador {
                                 Model model) {
         int pageSize = 6;
  
-        Page<Livro> page = livroServico.findPaginated(pageNo, pageSize, sortField, sortDir);
+        Page<Livro> page = livroService.findPaginated(pageNo, pageSize, sortField, sortDir);
         List<Livro> livros = page.getContent();
  
         model.addAttribute("currentPage", pageNo);
@@ -84,7 +92,7 @@ public class LivroControlador {
 	@PostMapping("/buscar")
 	public String buscarLivros(Model model, @Param("autor") String autor) {
 		
-		List<Livro> livros = livroServico.buscarLivros(autor);
+		List<Livro> livros = livroService.buscarLivros(autor);
 		
 		if (autor == null || autor == "" || livros.isEmpty()) {
 			return "redirect:/";
@@ -93,4 +101,5 @@ public class LivroControlador {
 		
 		return "/lista-de-livros";
 	}
+	
 }

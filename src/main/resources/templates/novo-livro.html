@@ -20,6 +20,11 @@
 		</div>
 
 		<form th:action="@{/salvar-livro}" th:object="${livro}" method="post">
+		
+		<input class="form-control" id="imagem" name="imagem" type="text"
+			th:field="*{imagem}" placeholder="Imagem do livro"
+			aria-label="default input example">
+		
 		<input class="form-control" id="titulo" name="titulo" type="text"
 			th:field="*{titulo}" placeholder="Título do livro"
 			aria-label="default input example"> <input

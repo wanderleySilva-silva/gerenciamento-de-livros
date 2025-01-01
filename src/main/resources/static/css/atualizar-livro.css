@@ -34,10 +34,8 @@ form {
 	width: 500px;
 	margin: 0 auto;
 }
-#titulo{
-	margin-bottom: 1rem;
-}
-#titulo, #autor{
+
+#imagem, #titulo, #autor{
 	width: 100%;
 	padding: 10px;
 	border: 1px solid #ccc;

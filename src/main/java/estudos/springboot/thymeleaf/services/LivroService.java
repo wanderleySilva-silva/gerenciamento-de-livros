@@ -1,4 +1,4 @@
-package estudos.springboot.thymeleaf.servico;
+package estudos.springboot.thymeleaf.services;
 
 import java.util.List;
 import java.util.Optional;
@@ -12,32 +12,32 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import estudos.springboot.thymeleaf.modelo.Livro;
-import estudos.springboot.thymeleaf.repositorio.LivroRepositorio;
+import estudos.springboot.thymeleaf.entities.Livro;
+import estudos.springboot.thymeleaf.repositories.LivroRepository;
 
 @Service
-public class LivroServico {
+public class LivroService {
 
 	@Autowired
-	private LivroRepositorio livroRepositorio;
+	private LivroRepository livroRepository;
 
 	public Livro salvarLivro(Livro livro) {
-		return livroRepositorio.save(livro);
+		return livroRepository.save(livro);
 	}
 
 	public List<Livro> listarLivros() {
-		return livroRepositorio.findAll();
+		return livroRepository.findAll();
 	}
 
 	public void excluirLivro(Long codigo) {
-		livroRepositorio.deleteById(codigo);
+		livroRepository.deleteById(codigo);
 	}
 
 	public Livro atualizarLivro(Long codigo, Livro livro) {
 		Livro livroSalvo = validarSeLivroExiste(codigo);
 		BeanUtils.copyProperties(livro, livroSalvo, "codigo");
 		Livro livroAtualizado = livroSalvo;
-		livroRepositorio.save(livroAtualizado);
+		livroRepository.save(livroAtualizado);
 
 		return livroAtualizado;
 	}
@@ -53,7 +53,7 @@ public class LivroServico {
 	}
 
 	public Optional<Livro> buscarLivroPorCodigo(Long codigo) {
-		return livroRepositorio.findById(codigo);
+		return livroRepository.findById(codigo);
 	}
 
 	public Page<Livro> findPaginated(int pageNum, int pageSize, String sortField, String sortDirection) {
@@ -61,12 +61,12 @@ public class LivroServico {
 				: Sort.by(sortField).descending();
 
 		Pageable pageable = PageRequest.of(pageNum - 1, pageSize, sort);
-		return this.livroRepositorio.findAll(pageable);
+		return this.livroRepository.findAll(pageable);
 	}
 
 	public List<Livro> buscarLivros(String autor) {
 
-		return livroRepositorio.findByAutorContainingIgnoreCase(autor);
+		return livroRepository.findByAutorNomeContainingIgnoreCase(autor);
 	}
 
 }
