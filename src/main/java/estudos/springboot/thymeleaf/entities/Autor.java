@@ -8,9 +8,15 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import lombok.Data;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 @Entity
 @Table(name = "autor")
 public class Autor {
@@ -22,5 +28,18 @@ public class Autor {
 	
 	@OneToMany(mappedBy = "autor")
 	private List<Livro> livros;
+	
+	public Autor(Long id) {
+		this.id = id;
+	}
+	
+	public Autor(String nome) {
+		this.nome = nome;
+	}
+	
+	public Autor(Long id, String nome) {
+		this.id = id;
+		this.nome = nome;
+	}
 
 }

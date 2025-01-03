@@ -5,7 +5,6 @@ import java.util.Optional;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -13,6 +12,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import estudos.springboot.thymeleaf.entities.Livro;
+import estudos.springboot.thymeleaf.exceptions.LivroNotFoundException;
 import estudos.springboot.thymeleaf.repositories.LivroRepository;
 
 @Service
@@ -33,21 +33,23 @@ public class LivroService {
 		livroRepository.deleteById(codigo);
 	}
 
-	public Livro atualizarLivro(Long codigo, Livro livro) {
+	public Livro atualizarLivro(Long codigo, Livro livro) throws LivroNotFoundException {
 		Livro livroSalvo = validarSeLivroExiste(codigo);
-		BeanUtils.copyProperties(livro, livroSalvo, "codigo");
-		Livro livroAtualizado = livroSalvo;
-		livroRepository.save(livroAtualizado);
+		livroSalvo.setImagem(livro.getImagem());
+		livroSalvo.setTitulo(livro.getTitulo());
+		livroSalvo.setAutor(livro.getAutor());
+		
+		livroRepository.save(livroSalvo);
 
-		return livroAtualizado;
+		return livroSalvo;
 	}
 
-	public Livro validarSeLivroExiste(Long codigo) {
+	public Livro validarSeLivroExiste(Long codigo) throws LivroNotFoundException {
 		Optional<Livro> livro = buscarLivroPorCodigo(codigo);
 		if (livro.isPresent()) {
 			return livro.get();
 		} else {
-			throw new EmptyResultDataAccessException(1);
+			throw new LivroNotFoundException("O livro com o código " + codigo + " não foi encontrado.");
 		}
 
 	}

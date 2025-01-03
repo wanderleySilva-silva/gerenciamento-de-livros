@@ -19,24 +19,26 @@
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class="container-fluid" id="nav">
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item" style="text-align: center;">
-         <h1 style="color: #fff;">Gerenciamento de livros</h1>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
+<div th:insert="~{fragmentos/botao-voltar :: botaoVoltar('/administrador/home')}" class="voltar" style="margin-bottom: 16px;"></div>
 
-<div class="principal">
-		<div class="titulo"
-			style="display: flex; justify-content: space-between; align-items: center;">
-			<div class="col-sm-4">
-				<form th:action="@{/buscar}" method="post"
-					style="margin-top: 8px; margin-bottom: 8px;">
+<div class="container">
+
+		<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd; margin-bottom: 32px;">
+		    <div class="container-fluid d-flex justify-content-center align-items-center">
+		        <h3>Gerenciamento de livros</h3>
+		    </div>
+		</nav>
+		
+		<div class="alert alert-danger alert-dismissible fade show"
+	        id="mensagem-alteracao" th:if="${livroNotFound}">
+	        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+	        <span class="mensagem" th:text="${livroNotFound}"></span>
+	    </div>
+
+		
+		<div class="row">
+			<div class="col-12 text-end my-3 d-flex align-items-center justify-content-between">
+				<form class="d-flex w-50" th:action="@{/livros/buscar}" method="post">
 					<div class="input-group">
 						<input type="text" class="form-control" name="autor"
 							placeholder="Busque um livro pelo autor"
@@ -44,14 +46,16 @@
 						<button class="btn btn-outline-success" id="buscar" type="submit">Buscar</button>
 					</div>
 				</form>
+				
+				<a th:href="@{/livros/novo-livro}" id="novo" type="button"
+				class="btn btn-success">Novo Livro</a>
 			</div>
-			<a th:href="@{/novo-livro}" id="novo" type="button"
-				class="btn btn-primary" style="margin-left: auto;">Novo Livro</a>
+			
 		</div>
 
 		<div class="table-responsive">
-		<a th:href="@{/download-pdf}" class="btn btn-primary"></a>
-			<table>
+
+			<table class="table table-bordered table-striped">
 				<thead>
 					<tr>
 						<th>Código</th>
@@ -66,15 +70,15 @@
 						<td th:text="${livro.codigo}" style="white-space: nowrap"></td>
 						<td><img th:src="${livro.imagem}" width="75px" height="75px" style="border-radius: 40px;"/></td>
 						<td th:text="${livro.titulo}" style="white-space: nowrap;"></td>
-						<td th:text="${livro.autor}" style="white-space: nowrap;"></td>
-						<td class="acoes" style="white-space: nowrap;">
+						<td th:text="${livro.autor.nome}" style="white-space: nowrap;"></td>
+						<td class="acoes">
 
 							<div>
-								<a class="btn" id="editar"
-									th:href="@{/editar-livro/{codigo}(codigo=${livro.codigo})}">Editar</a>
+								<a class="btn btn-outline-primary btn-sm" id="editar"
+									th:href="@{/livros/editar-livro/{codigo}(codigo=${livro.codigo})}">Editar</a>
 
-								<a class="btn" id="excluir"
-									th:href="@{/excluir-livro/{codigo}(codigo=${livro.codigo})}"
+								<a class="btn btn-outline-danger btn-sm" id="excluir"
+									th:href="@{/livros/excluir-livro/{codigo}(codigo=${livro.codigo})}"
 									th:data-confirm-delete="|Você gostaria de excluir o livro ${livro.titulo}?|"
 									th:onclick="if (!confirm(this.getAttribute('data-confirm-delete')))
 													      return false">Excluir</a>
@@ -85,19 +89,20 @@
 				</tbody>
 			</table>
 		</div>
-		<div th:if="${totalPages > 1}" style="background-color: #79b6c9; border-radius: 5px;">
-			<div class="row col-sm-10">
-				<div class="col-sm-5"></div>
-				<div class="col-sm-3">
-					<span style="color: #000000"
+		<div th:if="${totalPages > 1}" style="background-color: #e3f2fd;">
+			<div class="row justify-content-center">
+				<div class="col-sm-10 text-center">
+				<div>
+					<span style="color: #000000; font-weight: bold; font-size: 16px;"
 						th:each="i: ${#numbers.sequence(1, totalPages)}"> <a
 						th:if="${currentPage != i}"
-						th:href="@{'/page/' + ${i}+ '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">[[${i}]]</a>
+						th:href="@{'/livros/page/' + ${i}+ '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">[[${i}]]</a>
 						<span th:unless="${currentPage != i}">[[${i}]]</span>
 					</span>
 				</div>
 			</div>
 		</div>
+	  </div>
 	</div>
 </body>
 </html>

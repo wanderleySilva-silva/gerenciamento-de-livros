@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Fragmentos</title>
+</head>
+<body>
+    <div th:fragment="botaoVoltar(url)">
+        <form th:action="@{${url}}" method="get">
+            <button type="submit" class="btn btn-primary">Voltar</button>
+        </form>
+    </div>
+</body>
+</html>
