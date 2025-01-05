@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
 <meta charset="UTF-8">
 
@@ -15,7 +15,7 @@
 
 <link rel="stylesheet" th:href="@{/css/lista-de-livros.css}">
 
-<title>Lista de livros</title>
+<title>Lista de autores</title>
 </head>
 <body>
 
@@ -100,9 +100,9 @@
 					<tr th:each="autor : ${autores}">
 						<td th:text="${autor.id}" style="white-space: nowrap"></td>
 						<td th:text="${autor.nome}" style="white-space: nowrap;"></td>
-						<td class="acoes">
+						<td class="acoes" sec:authorize="hasRole('ROLE_ADMIN')">
 
-							<div sec:authorize="hasRole('ROLE_ADMIN')">
+							<div>
 								<a class="btn btn-outline-primary btn-sm" id="editar"
 									th:href="@{/autores/editar-autor/{id}(id=${autor.id})}">Editar</a>
 

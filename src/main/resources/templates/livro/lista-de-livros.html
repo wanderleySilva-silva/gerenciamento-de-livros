@@ -63,7 +63,7 @@
 						<th>Título</th>
 						<th>Autor</th>
 						<th>Detalhes</th>
-						<th>Ações</th>
+						<th sec:authorize="hasRole('ROLE_ADMIN')">Ações</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -75,7 +75,7 @@
 						<td>
 							<a class="btn btn-outline-secondary btn-sm" th:href="@{/livros/detalhar(codigo=${livro.codigo})}">Visualizar</a>
 						</td>
-						<td class="acoes">
+						<td class="acoes" sec:authorize="hasRole('ROLE_ADMIN')">
 
 							<div>
 								<a class="btn btn-outline-primary btn-sm" id="editar"
