@@ -7,7 +7,7 @@
 
   <div style="display: inline_block">
     <h3>Tela de login.</h3>
-    <img align="center" height="300px;" width="800px" src="src/main/resources/static/imagens/tela-login.jpeg">
+    <img align="center" height="300px;" width="500px" src="src/main/resources/static/imagens/tela-login.jpeg">
    </div>
   <div style="display: inline_block">
     <h3>Tela inicial do administrador.</h3>
