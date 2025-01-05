@@ -62,6 +62,7 @@
 						<th>Imagem</th>
 						<th>Título</th>
 						<th>Autor</th>
+						<th>Detalhes</th>
 						<th>Ações</th>
 					</tr>
 				</thead>
@@ -71,6 +72,9 @@
 						<td><img th:src="${livro.imagem}" width="75px" height="75px" style="border-radius: 40px;"/></td>
 						<td th:text="${livro.titulo}" style="white-space: nowrap;"></td>
 						<td th:text="${livro.autor.nome}" style="white-space: nowrap;"></td>
+						<td>
+							<a class="btn btn-outline-secondary btn-sm" th:href="@{/livros/detalhar(codigo=${livro.codigo})}">Visualizar</a>
+						</td>
 						<td class="acoes">
 
 							<div>

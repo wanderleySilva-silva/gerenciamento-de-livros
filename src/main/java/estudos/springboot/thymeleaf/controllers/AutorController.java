@@ -55,6 +55,7 @@ public class AutorController {
 
 	@GetMapping("/listar-autores")
 	public String paginaInicial(Model model) {
+		
 		return findPaginated(1, "nome", "asc", model);
 	}
 
@@ -130,6 +131,8 @@ public class AutorController {
 		model.addAttribute("reverseSortDir", sortDir.equals("asc") ? "desc" : "asc");
 
 		model.addAttribute("autores", autoresDto);
+		
+		model.addAttribute("autor", new AutorRequestDTO());
 
 		return "autor/listar-autores";
 	}

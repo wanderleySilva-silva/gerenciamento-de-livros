@@ -11,6 +11,8 @@ import org.thymeleaf.context.Context;
 import org.thymeleaf.spring6.SpringTemplateEngine;
 import org.xhtmlrenderer.pdf.ITextRenderer;
 
+import estudos.springboot.thymeleaf.exceptions.LivroNotFoundException;
+
 @Service
 public class PdfService {
 	
@@ -22,8 +24,8 @@ public class PdfService {
 	@Autowired
     private SpringTemplateEngine templateEngine;
 
-    public File generatePdf() throws Exception{
-        Context context = getContext();
+    public File generatePdf(Long codigo) throws Exception{
+        Context context = getContext(codigo);
         String html = loadAndFillTemplate(context);
         return renderPdf(html);
     }
@@ -40,15 +42,15 @@ public class PdfService {
         return file;
     }
     
-    private Context getContext() {
+    private Context getContext(Long codigo) throws LivroNotFoundException {
         Context context = new Context();
-        context.setVariable("livros", livroService.listarLivros());
+        context.setVariable("livro", livroService.validarSeLivroExiste(codigo));
         return context;
     }
 
 
     private String loadAndFillTemplate(Context context) {
-        return templateEngine.process("PdfLivros", context);
+        return templateEngine.process("livro/PdfLivros", context);
     }
 
 }

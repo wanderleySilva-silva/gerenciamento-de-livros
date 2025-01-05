@@ -74,9 +74,9 @@ public class LivroController {
 
 		livroService.salvarLivro(novoLivro);
 		
-		attributes.addFlashAttribute("livroSalvoSucesso", "Livro salvo com sucesso.");
+		model.addAttribute("livroSalvoSucesso", "Livro salvo com sucesso.");
 
-		return "redirect:/livros/novo-livro";
+		return "livro/novo-livro";
 	}
 
 	@GetMapping("/listar-livros")
@@ -173,6 +173,16 @@ public class LivroController {
 		model.addAttribute("livros", livros);
 
 		return "livro/lista-de-livros";
+	}
+	
+	@GetMapping("/detalhar")
+	public String detalharLivro(@RequestParam("codigo") Long codigo, Model model) throws LivroNotFoundException {
+		
+		Livro livro = livroService.validarSeLivroExiste(codigo);
+		
+		model.addAttribute("livro", livro);
+		
+		return "livro/detalhar-livro";
 	}
 
 }

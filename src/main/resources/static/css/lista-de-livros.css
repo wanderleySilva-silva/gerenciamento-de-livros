@@ -7,7 +7,7 @@
 body {
 	background-color: #f8f9fa;
 	padding: 20px;
-	font-size: small;
+
 }
 
 #buscar {
@@ -63,4 +63,66 @@ td {
 
 th {
 	color: #000000;
+}
+
+#modal-header-titulo {
+  margin-bottom: 2px;
+	color: #ffffff;
+	text-align: center;
+	background-color: #163b79;
+}
+
+.modal-header h2 {
+  text-align: center;
+  width: 100%; /* Garante que o título ocupe toda a largura */
+  margin: 0; /* Remove margens adicionais */
+}
+
+
+/* Estilização do modal */
+.modal-content {
+  background-color: #f9f9f9; /* Cor de fundo clara */
+  
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  border: none;
+}
+
+/* Botão de fechar do modal */
+.modal .btn-close {
+  color: #000;
+  font-size: 1.2rem;
+  opacity: 0.8;
+  transition: opacity 0.2s ease;
+}
+
+.modal .btn-close:hover {
+  opacity: 1;
+}
+
+.form-label {
+	font-weight: bold;
+	color: #495057;
+}
+
+.input-group .form-control {
+	width: 300px;
+}
+
+#botao-salvar {
+	border-color: #007bff;
+	display: block;
+	width: 100%;
+	padding: 0.5em;
+	border: none;
+	border-radius: 5px;
+	background-color: #28a745;
+	color: #fff;
+	cursor: pointer;
+	transition: background-color 0.3s;
+	margin-bottom: 10px;
+	font-weight: bold;
+}
+
+#botao-salvar:hover {
+	background-color: #218838;
 }
