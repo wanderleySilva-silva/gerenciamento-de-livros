@@ -1,7 +1,7 @@
 # Gerenciamento de Livros
 
   <p>
-    A tela inicial da aplicação possui, como elemento principal, uma tabela com a lista de todos os livros cadastrados, opções para cadastrar um novo livro, buscar livros pelo autor, assim como editar ou excluir um livro. A página foi feita de tal modo que só exibe 6 linhas da tabela.
+   Telas do sistema
   </p
 <div  align="center">
 
