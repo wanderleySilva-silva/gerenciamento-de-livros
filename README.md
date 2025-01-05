@@ -42,4 +42,8 @@
         <h3>Arquivo PDF dos detalhes do livro.</h3>
          <img align="center" height="300px;" width="800px" src="src/main/resources/static/imagens/pdf-livro.jpeg">
     </div>
+    <div style="display: inline_block"><br>
+        <h3>Página de erro.</h3>
+         <img align="center" height="300px;" width="800px" src="src/main/resources/static/imagens/pagina-erro.jpeg">
+    </div>
 </div>
