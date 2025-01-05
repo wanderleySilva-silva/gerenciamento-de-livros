@@ -1,0 +1,110 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	font-family: "Open Sans", sans-serif;
+}
+
+body {
+	margin-top: 80px;
+}
+
+.container {
+	max-width: 700px;
+}
+
+.periodo-matricula {
+	font-size: medium;
+	color: red;
+}
+
+/* .container, .periodo-matricula {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+} */
+
+.conecta-eletiva-title {
+	
+	color: #ffffff;
+	font-size: 20px;
+	font-weight: bold;
+	letter-spacing: 1px;
+}
+
+.conecta-eletiva-title h1 {
+	font-weight: bold;
+	color: ffffff;
+}
+
+#card-titulo-principal{
+	margin-bottom: 2px;
+	background-color: #163b79;
+}
+
+.form-group {
+	margin-bottom: 15px;
+}
+
+label {
+	display: block;
+	font-size: 12px;
+	font-weight: normal;
+	margin-bottom: 5px;
+
+}
+
+#username, #password {
+	width: 100%;
+	padding: 4px;
+	border-radius: 8px;
+	font-size: 16px;
+}
+
+#login {
+	margin-top: 4px;
+	width: 100%;
+	padding: 5px;
+	background-color: #28a745;
+	border: none;
+	border-radius: 8px;
+	font-weight: bold;;
+	color: white;
+	font-size: 14px;
+	cursor: pointer;
+	transition: background-color 0.9999s ease;
+}
+
+#login:hover {
+	background-color: #1e7e34;
+}
+
+p {
+	margin-top: 15px;
+	color: red;
+	text-align: center;
+	font-size: small;
+}
+
+#card-body-title {
+	display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#card-principal {
+	border-radius: 8px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+	display: flex;
+	flex-direction: column;
+	background-color: #FFFFFF;
+}
+
+#card-corpo {
+	border-radius: 8px;
+	background-color: #f6f8fa;
+	padding: 20px;
+}

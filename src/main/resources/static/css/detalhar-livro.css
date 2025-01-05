@@ -1,0 +1,31 @@
+@charset "UTF-8";
+
+* {
+	font-family: 'Open Sans', sans-serif;
+}
+
+body {
+	background-color: #f8f9fa;
+	padding: 20px;
+
+}
+
+/* .voltar {
+	max-width: 1000px;
+	min-width: 800px;
+	margin: auto;
+} */
+
+ul {
+	list-style: none;
+	padding: 0;
+	font-size: 18px;
+	color: #555;
+	line-height: 1.8;
+}
+
+li {
+	margin-bottom: 10px;
+	font-weight: bold;
+	font-style: italic;
+}

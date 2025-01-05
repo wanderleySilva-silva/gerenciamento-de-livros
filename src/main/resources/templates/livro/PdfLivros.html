@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Arquivo PDF</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
+</head>
+
+<body>
+<div class="container" style="font-family: Arial, sans-serif; margin: 20px;">
+    <h1 style="margin-bottom: 20px; font-size: 28px; text-align: center;">Detalhes do Livro</h1>
+    
+    <!-- Imagem do Livro -->
+    <div style="text-align: center; margin-bottom: 20px;">
+        <img th:src="${livro.imagem}" alt="Capa do livro" style="width: 150px; height: auto; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);" />
+    </div>
+    
+    <!-- Detalhes do Livro -->
+    <ul style="list-style-type: none; padding: 0; font-size: 20px; line-height: 1.5;">
+        <li th:text="'Título: ' + ${livro.titulo}" style="margin-bottom: 10px;"></li>
+        <li th:text="'Autor: ' + ${livro.autor.nome}" style="margin-bottom: 10px;"></li>
+    </ul>
+</div>
+
+</body>
+
+</html>

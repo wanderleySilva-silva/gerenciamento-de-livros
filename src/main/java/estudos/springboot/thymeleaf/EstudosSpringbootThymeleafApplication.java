@@ -9,7 +9,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @EntityScan(basePackages = { "estudos.springboot.thymeleaf.entities" })
 @EnableJpaRepositories(basePackages = { "estudos.springboot.thymeleaf.repositories" })
-@ComponentScan(basePackages = { "estudos.springboot.thymeleaf.services", "estudos.springboot.thymeleaf.controllers"})
+@ComponentScan(basePackages = { "estudos.springboot.thymeleaf.services", "estudos.springboot.thymeleaf.controllers", "estudos.springboot.thymeleaf.security"})
 @SpringBootApplication
 public class EstudosSpringbootThymeleafApplication {
 
