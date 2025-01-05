@@ -18,7 +18,6 @@ import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name = "usuario")
@@ -31,7 +30,6 @@ public class Usuario implements UserDetails {
 	private Long id;
 
 	@NotEmpty(message = "O nome de usuário deve ser informado.")
-	@Size(min = 7, max = 7, message = "O nome de usuário deve ter exatamente 7 dígitos.")
 	private String userName;
 
 	private String password;

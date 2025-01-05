@@ -13,11 +13,11 @@ public class LoginController {
 			@RequestParam(value = "logout", required = false) String logout, Model model) {
 
 		if (error != null) {
-			model.addAttribute("errorMsg", "Seu nome de usuário ou senha estão incorretos.");
+			model.addAttribute("errorMsg", "Usuário e/ou senha estão incorretos.");
 		}
 
 		if (logout != null) {
-			model.addAttribute("msg", "Você foi desconectado com sucesso.");
+			model.addAttribute("msg", "Desconectado com sucesso.");
 		}
 
 		return "login/login";

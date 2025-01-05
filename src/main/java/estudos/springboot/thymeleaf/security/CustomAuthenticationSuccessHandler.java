@@ -18,7 +18,7 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
 			Authentication authentication) throws IOException, ServletException {
 		Set<String> roles = AuthorityUtils.authorityListToSet(authentication.getAuthorities());
 
-		if (roles.contains("ROLE_ADMIN")) {
+		if (roles.contains("ROLE_ADMIN") || roles.contains("ROLE_USUARIO")) {
 			response.sendRedirect("administrador/home");
 		} else {
 			request.getSession().setAttribute("errorMessage", "Permissão negada.");
