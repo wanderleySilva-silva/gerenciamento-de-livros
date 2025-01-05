@@ -6,9 +6,9 @@ import estudos.springboot.thymeleaf.entities.Usuario;
 
 public interface UsuarioRepository extends JpaRepository<Usuario, Long>{
 	
-	Usuario findByUserName(String userName);
+	Usuario findByUsername(String username);
 
-	boolean existsByUserName(String userName);
+	boolean existsByUsername(String username);
 
 
 }

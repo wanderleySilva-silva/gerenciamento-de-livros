@@ -30,7 +30,7 @@ public class Usuario implements UserDetails {
 	private Long id;
 
 	@NotEmpty(message = "O nome de usuário deve ser informado.")
-	private String userName;
+	private String username;
 
 	private String password;
 
@@ -50,7 +50,7 @@ public class Usuario implements UserDetails {
 
 	@Override
 	public String getUsername() {
-		return userName;
+		return username;
 	}
 
 	public Long getId() {
@@ -62,11 +62,11 @@ public class Usuario implements UserDetails {
 	}
 
 	public String getUserName() {
-		return userName;
+		return username;
 	}
 
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setUserName(String username) {
+		this.username = username;
 	}
 
 	public void setPassword(String password) {
