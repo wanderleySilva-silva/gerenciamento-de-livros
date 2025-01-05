@@ -15,27 +15,27 @@
    </div>
    <div style="display: inline_block"><br>
         <h3>Tela de autores.</h3>
-         <img align="center" height="300px;" width="800px" src="src/main/resources/static/imagens/tela-autores.jpeg">
+         <img align="center" height="500px;" width="800px" src="src/main/resources/static/imagens/tela-autores.jpeg">
     </div>
     <div style="display: inline_block"><br>
         <h3>Formulário para cadastrar autor.</h3>
-         <img align="center" height="300px;" width="800px" src="src/main/resources/static/imagens/cadastrar-autor.jpeg">
+         <img align="center" height="300px;" width="600px" src="src/main/resources/static/imagens/cadastrar-autor.jpeg">
     </div>
     <div style="display: inline_block"><br>
         <h3>Formulário para editar autor.</h3>
-         <img align="center" height="300px;" width="800px" src="src/main/resources/static/imagens/editar-autor.jpeg">
+         <img align="center" height="300px;" width="600px" src="src/main/resources/static/imagens/editar-autor.jpeg">
     </div>
     <div style="display: inline_block"><br>
         <h3>Tela de livros.</h3>
-         <img align="center" height="300px;" width="800px" src="src/main/resources/static/imagens/tela-livros.jpeg">
+         <img align="center" height="500px;" width="800px" src="src/main/resources/static/imagens/tela-livros.jpeg">
     </div>
     <div style="display: inline_block"><br>
         <h3>Formulário para cadastrar livro.</h3>
-         <img align="center" height="300px;" width="800px" src="src/main/resources/static/imagens/cadastrar-livro.jpeg">
+         <img align="center" height="300px;" width="600px" src="src/main/resources/static/imagens/cadastrar-livro.jpeg">
     </div>
     <div style="display: inline_block"><br>
         <h3>Formulário para editar livro.</h3>
-         <img align="center" height="300px;" width="800px" src="src/main/resources/static/imagens/editar-livro.jpeg">
+         <img align="center" height="300px;" width="600px" src="src/main/resources/static/imagens/editar-livro.jpeg">
     </div>
     <div style="display: inline_block"><br>
         <h3>Detalhes do livro.</h3>
