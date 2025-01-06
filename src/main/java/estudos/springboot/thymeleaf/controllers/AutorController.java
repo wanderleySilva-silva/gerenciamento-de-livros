@@ -140,12 +140,14 @@ public class AutorController {
 	@PostMapping("/buscar")
 	public String buscarLivros(Model model, @Param("autor") String autor) {
 
-		List<AutorResponseDTO> autores = autorService.buscarPorNome(autor).stream()
-				.map(nome -> AutorResponseDTO.converterAutorParaAutorResponseDTO(nome)).collect(Collectors.toList());
-
-		if (autor == null || autor == "" || autores.isEmpty()) {
+		if (autor == null || autor.trim().isEmpty()) {
 			return "redirect:/autores/listar-autores";
 		}
+		
+		 List<AutorResponseDTO> autores = autorService.buscarPorNome(autor).stream()
+		            .map(autorEntity -> AutorResponseDTO.converterAutorParaAutorResponseDTO(autorEntity))
+		            .collect(Collectors.toList());
+		
 		model.addAttribute("autores", autores);
 
 		return "autor/listar-autores";

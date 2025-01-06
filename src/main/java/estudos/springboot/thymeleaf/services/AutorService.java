@@ -1,5 +1,6 @@
 package estudos.springboot.thymeleaf.services;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -51,8 +52,10 @@ public class AutorService {
 	}
 	
 	public List<Autor> buscarPorNome(String nome) {
-
-		return autorRepository.findByNomeContainingIgnoreCase(nome);
+	    if (nome == null || nome.trim().isEmpty()) {
+	        return Collections.emptyList(); // Retorna uma lista vazia se o nome for nulo ou vazio.
+	    }
+	    return autorRepository.findByNomeContainingIgnoreCase(nome);
 	}
 	
 	public Page<Autor> findPaginated(int pageNum, int pageSize, String sortField, String sortDirection) {
