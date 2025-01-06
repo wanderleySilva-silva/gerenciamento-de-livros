@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class PaginaErroController {
+	
 	@RequestMapping("/erro")
 	public String handleError() {
 
