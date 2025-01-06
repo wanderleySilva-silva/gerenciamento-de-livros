@@ -12,7 +12,6 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @ComponentScan(basePackages = { "estudos.springboot.thymeleaf.services", "estudos.springboot.thymeleaf.controllers", "estudos.springboot.thymeleaf.security"})
 @SpringBootApplication
 public class EstudosSpringbootThymeleafApplication {
-
 	public static void main(String[] args) {
 		SpringApplication.run(EstudosSpringbootThymeleafApplication.class, args);
 	}
