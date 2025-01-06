@@ -132,7 +132,7 @@ public class AutorController {
 
 		model.addAttribute("autores", autoresDto);
 		
-		model.addAttribute("autor", new AutorRequestDTO());
+		//model.addAttribute("autor", new AutorRequestDTO());
 
 		return "autor/listar-autores";
 	}
