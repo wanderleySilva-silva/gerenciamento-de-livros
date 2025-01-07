@@ -31,7 +31,7 @@ public class LivroService {
 	}
 	
 	public boolean verificarLivroDuplicado(Livro livro) {
-		return livroRepository.existsByTitutoAndAutorNome(livro.getTitulo(), livro.getAutor().getNome());
+		return livroRepository.existsByTituloAndAutorNome(livro.getTitulo(), livro.getAutor().getNome());
 	}
 
 	public List<Livro> listarLivros() {
