@@ -57,37 +57,38 @@ public class LivroController {
 	}
 
 	@PostMapping("/salvar-livro")
-	public String salvarLivro(@ModelAttribute("livro") @Valid LivroRequestDTO livroRequestDTO, BindingResult error,
-			Model model, RedirectAttributes attributes) {
+	public String salvarLivro(@ModelAttribute("livro") @Valid LivroRequestDTO livroRequestDTO, BindingResult error, Model model) {
 
-		if (error.hasErrors()) {
-			List<AutorResponseDTO> autores = autorService.listarTodos().stream()
-					.map(autor -> AutorResponseDTO.converterAutorParaAutorResponseDTO(autor))
-					.collect(Collectors.toList());
+	    if (error.hasErrors()) {
+	        List<AutorResponseDTO> autores = autorService.listarTodos().stream()
+	                .map(autor -> AutorResponseDTO.converterAutorParaAutorResponseDTO(autor))
+	                .collect(Collectors.toList());
 
-			model.addAttribute("autores", autores);
+	        model.addAttribute("autores", autores);
 
-			return "livro/novo-livro";
+	        return "livro/novo-livro";
+	    }
 
-		}
+	    Livro novoLivro = livroRequestDTO.converterParaEntidade();
 
-		Livro novoLivro = livroRequestDTO.converterParaEntidade();
+	    try {
+	        livroService.salvarLivro(novoLivro);
+	        model.addAttribute("livroSalvoSucesso", "Livro salvo com sucesso.");
 
-		try {
-			
-			livroService.salvarLivro(novoLivro);
-			
-			model.addAttribute("livroSalvoSucesso", "Livro salvo com sucesso.");
+	    } catch (LivroDuplicadoException e) {
+	        model.addAttribute("livroDuplicado", e.getMessage());
+	    }
 
-			return "livro/novo-livro";
-			
-		} catch (LivroDuplicadoException e) {
-			
-			model.addAttribute("livroDuplicado", e.getMessage());
-			
-			return "redirect:/livros/novo-livro";
-		}
+	    // Atualiza a lista de autores após uma tentativa de salvar (caso haja erro)
+	    List<AutorResponseDTO> autores = autorService.listarTodos().stream()
+	            .map(autor -> AutorResponseDTO.converterAutorParaAutorResponseDTO(autor))
+	            .collect(Collectors.toList());
+
+	    model.addAttribute("autores", autores);
+
+	    return "livro/novo-livro";
 	}
+
 
 	@GetMapping("/listar-livros")
 	public String paginaInicial(Model model) {
