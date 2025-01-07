@@ -3,7 +3,6 @@ package estudos.springboot.thymeleaf.services;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -12,6 +11,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import estudos.springboot.thymeleaf.entities.Livro;
+import estudos.springboot.thymeleaf.exceptions.LivroDuplicadoException;
 import estudos.springboot.thymeleaf.exceptions.LivroNotFoundException;
 import estudos.springboot.thymeleaf.repositories.LivroRepository;
 
@@ -21,8 +21,17 @@ public class LivroService {
 	@Autowired
 	private LivroRepository livroRepository;
 
-	public Livro salvarLivro(Livro livro) {
+	public Livro salvarLivro(Livro livro) throws LivroDuplicadoException {
+		
+		if(verificarLivroDuplicado(livro)) {
+			throw new LivroDuplicadoException("Não é possível salvar este livro, pois ele já está cadastrado.");
+		}
+		
 		return livroRepository.save(livro);
+	}
+	
+	public boolean verificarLivroDuplicado(Livro livro) {
+		return livroRepository.existsByTitutoAndAutorNome(livro.getTitulo(), livro.getAutor().getNome());
 	}
 
 	public List<Livro> listarLivros() {

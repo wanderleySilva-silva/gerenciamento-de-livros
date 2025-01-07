@@ -21,6 +21,7 @@ import estudos.springboot.thymeleaf.dto.autor.AutorResponseDTO;
 import estudos.springboot.thymeleaf.dto.livro.LivroRequestDTO;
 import estudos.springboot.thymeleaf.dto.livro.LivroResponseDTO;
 import estudos.springboot.thymeleaf.entities.Livro;
+import estudos.springboot.thymeleaf.exceptions.LivroDuplicadoException;
 import estudos.springboot.thymeleaf.exceptions.LivroNotFoundException;
 import estudos.springboot.thymeleaf.services.AutorService;
 import estudos.springboot.thymeleaf.services.LivroService;
@@ -72,7 +73,16 @@ public class LivroController {
 
 		Livro novoLivro = livroRequestDTO.converterParaEntidade();
 
-		livroService.salvarLivro(novoLivro);
+		try {
+			
+			livroService.salvarLivro(novoLivro);
+			
+		} catch (LivroDuplicadoException e) {
+			
+			attributes.addFlashAttribute("livroDuplicado", e.getMessage());
+			
+			return "redirect:/livros/novo-livro";
+		}
 		
 		model.addAttribute("livroSalvoSucesso", "Livro salvo com sucesso.");
 
