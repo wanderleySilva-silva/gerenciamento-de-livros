@@ -77,16 +77,16 @@ public class LivroController {
 			
 			livroService.salvarLivro(novoLivro);
 			
+			model.addAttribute("livroSalvoSucesso", "Livro salvo com sucesso.");
+
+			return "livro/novo-livro";
+			
 		} catch (LivroDuplicadoException e) {
 			
 			attributes.addFlashAttribute("livroDuplicado", e.getMessage());
 			
 			return "redirect:/livros/novo-livro";
 		}
-		
-		model.addAttribute("livroSalvoSucesso", "Livro salvo com sucesso.");
-
-		return "livro/novo-livro";
 	}
 
 	@GetMapping("/listar-livros")
