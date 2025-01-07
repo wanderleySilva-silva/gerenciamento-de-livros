@@ -32,6 +32,8 @@ public class LivroService {
 	
 	public boolean verificarLivroDuplicado(Livro livro) {
 		
+		livro = livroRepository.findByTituloAndAutorNome(livro.getTitulo(), livro.getAutor().getNome());
+		
 		return listarLivros().contains(livro) ? true : false;
 	}
 
