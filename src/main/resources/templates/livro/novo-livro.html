@@ -39,6 +39,12 @@
 					<button type="button" class="btn-close" data-bs-dismiss="alert"></button>
 					<span class="mensagem" th:text="${livroSalvoSucesso}"></span>
 				</div>
+				
+				<div class="alert alert-danger alert-dismissible fade show"
+					id="mensagem-alteracao" th:if="${livroDuplicado}">
+					<button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+					<span class="mensagem" th:text="${livroDuplicado}"></span>
+				</div>
 
 
 

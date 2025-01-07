@@ -83,7 +83,7 @@ public class LivroController {
 			
 		} catch (LivroDuplicadoException e) {
 			
-			attributes.addFlashAttribute("livroDuplicado", e.getMessage());
+			model.addAttribute("livroDuplicado", e.getMessage());
 			
 			return "redirect:/livros/novo-livro";
 		}
